@@ -1,0 +1,53 @@
+@options
+@packages
+@argfile
+--class-path
+'C:/Users/HP/.m2/repository/org/openjfx/javafx-controls/13/javafx-controls-13.jar;C:/Users/HP/.m2/repository/org/openjfx/javafx-graphics/13/javafx-graphics-13.jar;C:/Users/HP/.m2/repository/org/openjfx/javafx-base/13/javafx-base-13.jar'
+--module-path
+'C:/Users/HP/OneDrive - The Manchester College/LEVEL 5/oop/universityHall/funmi_Student_Hall/target/classes;C:/Users/HP/.m2/repository/org/openjfx/javafx-graphics/13/javafx-graphics-13-win.jar;C:/Users/HP/.m2/repository/org/openjfx/javafx-base/13/javafx-base-13-win.jar;C:/Users/HP/.m2/repository/org/openjfx/javafx-controls/13/javafx-controls-13-win.jar'
+--patch-module
+com.mycompany.funmi_student_hall='C:/Users/HP/OneDrive - The Manchester College/LEVEL 5/oop/universityHall/funmi_Student_Hall/src/main/java'
+-encoding
+'UTF-8'
+-protected
+-source
+'11'
+--module-source-path
+'C:/Users/HP/OneDrive - The Manchester College/LEVEL 5/oop/universityHall/funmi_Student_Hall/target/site/apidocs/src'
+-author
+-bottom
+'Copyright &#169; 2023. All rights reserved.'
+-charset
+'UTF-8'
+-d
+'C:/Users/HP/OneDrive - The Manchester College/LEVEL 5/oop/universityHall/funmi_Student_Hall/target/site/apidocs'
+-docencoding
+'UTF-8'
+-doctitle
+'funmi_Student_Hall 1.0-SNAPSHOT API'
+-linkoffline
+'https://docs.oracle.com/en/java/javase/11/docs/api' 'C:/Users/HP/OneDrive - The Manchester College/LEVEL 5/oop/universityHall/funmi_Student_Hall/target/javadoc-bundle-options'
+-use
+-version
+-windowtitle
+'funmi_Student_Hall 1.0-SNAPSHOT API'
+com.mycompany.funmi_student_hall
+'C:/Users/HP/OneDrive - The Manchester College/LEVEL 5/oop/universityHall/funmi_Student_Hall/src/main/java/module-info.java'
+C:\Users\HP\OneDrive - The Manchester College\LEVEL 5\oop\universityHall\funmi_Student_Hall\target\site\apidocs\allclasses-index.html = 1681992793811
+C:\Users\HP\OneDrive - The Manchester College\LEVEL 5\oop\universityHall\funmi_Student_Hall\target\site\apidocs\allpackages-index.html = 1681992793817
+C:\Users\HP\OneDrive - The Manchester College\LEVEL 5\oop\universityHall\funmi_Student_Hall\target\site\apidocs\copy.svg = 1681992793952
+C:\Users\HP\OneDrive - The Manchester College\LEVEL 5\oop\universityHall\funmi_Student_Hall\target\site\apidocs\element-list = 1681992793601
+C:\Users\HP\OneDrive - The Manchester College\LEVEL 5\oop\universityHall\funmi_Student_Hall\target\site\apidocs\help-doc.html = 1681992793892
+C:\Users\HP\OneDrive - The Manchester College\LEVEL 5\oop\universityHall\funmi_Student_Hall\target\site\apidocs\index-all.html = 1681992793875
+C:\Users\HP\OneDrive - The Manchester College\LEVEL 5\oop\universityHall\funmi_Student_Hall\target\site\apidocs\index.html = 1681992793879
+C:\Users\HP\OneDrive - The Manchester College\LEVEL 5\oop\universityHall\funmi_Student_Hall\target\site\apidocs\jquery-ui.overrides.css = 1681992794229
+C:\Users\HP\OneDrive - The Manchester College\LEVEL 5\oop\universityHall\funmi_Student_Hall\target\site\apidocs\member-search-index.js = 1681992793825
+C:\Users\HP\OneDrive - The Manchester College\LEVEL 5\oop\universityHall\funmi_Student_Hall\target\site\apidocs\module-search-index.js = 1681992793819
+C:\Users\HP\OneDrive - The Manchester College\LEVEL 5\oop\universityHall\funmi_Student_Hall\target\site\apidocs\overview-tree.html = 1681992793763
+C:\Users\HP\OneDrive - The Manchester College\LEVEL 5\oop\universityHall\funmi_Student_Hall\target\site\apidocs\package-search-index.js = 1681992793821
+C:\Users\HP\OneDrive - The Manchester College\LEVEL 5\oop\universityHall\funmi_Student_Hall\target\site\apidocs\script.js = 1681992793941
+C:\Users\HP\OneDrive - The Manchester College\LEVEL 5\oop\universityHall\funmi_Student_Hall\target\site\apidocs\search.js = 1681992793956
+C:\Users\HP\OneDrive - The Manchester College\LEVEL 5\oop\universityHall\funmi_Student_Hall\target\site\apidocs\serialized-form.html = 1681992793710
+C:\Users\HP\OneDrive - The Manchester College\LEVEL 5\oop\universityHall\funmi_Student_Hall\target\site\apidocs\stylesheet.css = 1681992793910
+C:\Users\HP\OneDrive - The Manchester College\LEVEL 5\oop\universityHall\funmi_Student_Hall\target\site\apidocs\tag-search-index.js = 1681992793828
+C:\Users\HP\OneDrive - The Manchester College\LEVEL 5\oop\universityHall\funmi_Student_Hall\target\site\apidocs\type-search-index.js = 1681992793823
