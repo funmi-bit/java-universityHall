@@ -31,7 +31,7 @@ public class StudentHall implements Serializable{
         } else {
             return false;
         }
-        //return addStudent(theStu);
+     
     }
     
        public boolean emp(Employee theEmp) {
@@ -41,7 +41,17 @@ public class StudentHall implements Serializable{
         } else {
             return false;
         }
-        //return addStudent(theStu);
+      
+    }
+       
+    public boolean Name(Hall hallName) {
+        if (!isFull()) {
+            studentResidents.add(e);
+            return true;
+        } else {
+            return false;
+        }
+     
     }
 
     /**

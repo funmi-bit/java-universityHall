@@ -1,11 +1,12 @@
 package com.mycompany.funmi_student_hall;
 
 import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
-import java.util.ArrayList;
-import java.util.Collection;
+import javafx.scene.control.ComboBox;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.scene.control.DatePicker;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -15,7 +16,6 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.HBox;
@@ -47,9 +47,7 @@ public class StudentTest extends Application {
     private Label feeLabel = new Label("Tuiition Fee");
     private TextField feeField = new TextField();
     private Label startLabel = new Label("Start date");
-    private TextField startField = new TextField();
     private Label endLabel = new Label("End date");
-    private TextField endField = new TextField();
     private Label stuIDLabel = new Label("Student ID");
     private TextField stuIDField = new TextField();
     private Label rentLabel = new Label("Rent-");
@@ -66,7 +64,8 @@ public class StudentTest extends Application {
     private TextField roleField = new TextField();
     private Label salaryLabel = new Label("Salary");
     private TextField salaryField = new TextField();
-
+    private Label hallNameLabel = new Label("Which hall do you reside in");
+    private TextField hallNameField = new TextField();
     private Button addButton = new Button("Submit");
     private Button clearButton = new Button("Clear");
     private Button saveButton = new Button("Save");
@@ -90,12 +89,26 @@ public class StudentTest extends Application {
         priority1.setToggleGroup(toggle1);
         priority2.setToggleGroup(toggle1);
 
-        // checkboxes for degree course
-        CheckBox check1 = new CheckBox("undergraduate");
-        CheckBox check2 = new CheckBox("postgraduate");
-        CheckBox check3 = new CheckBox("foundation degree");
-        CheckBox check4 = new CheckBox("diploma");
+        //Creating a date picker
+        DatePicker startDate = new DatePicker();
+        DatePicker endDate = new DatePicker();
+      
+      
+         // create a list of options for degrees
+        ObservableList<String> options = FXCollections.observableArrayList(
+                "Please select",
+                "Undergraduate",
+                "Post graduate",
+                "foundation degree"
+        );
+        // create combo box
+         ComboBox<String> comboBox = new ComboBox<>(options);
+         comboBox.setValue("Please select");
 
+
+  
+         
+         
         // radio buttons for employees 
         RadioButton employee1 = new RadioButton("Yes");
         RadioButton employee2 = new RadioButton("No");
@@ -103,12 +116,15 @@ public class StudentTest extends Application {
         employee1.setToggleGroup(toggle2);
         employee2.setToggleGroup(toggle2);
 
+        
+        
         //this is the class that contains the students, parameter shows the maximum number of Students
         funmiHall = new StudentHall(50);
 
         //Horizontal componets 
-        HBox studentDetails1 = new HBox(10);
         HBox stuDetails = new HBox(10);
+        HBox studentDetails1 = new HBox(10);
+        HBox studentDetails3 = new HBox(10);
         HBox disabledDetails = new HBox(10);
         HBox disableButtons = new HBox(10);
         HBox priorityButtons = new HBox(10);
@@ -119,11 +135,10 @@ public class StudentTest extends Application {
         HBox employed = new HBox(10);
 
         // add components to HBoxes
-        studentDetails1.getChildren().addAll(nameLabel, nameField, dobLabel, dobField,
-                genderLabel, genderField,
-                homeAddressLabel, homeAddressField, courseLabel, courseField);
-        studentDetails2.getChildren().addAll(stuIDLabel, stuIDField, rentLabel, rentField,
-                feeLabel, feeField, startLabel, startField, endLabel, endField);
+        studentDetails1.getChildren().addAll(nameLabel, nameField, dobLabel, dobField, 
+                genderLabel, genderField, homeAddressLabel, homeAddressField);
+       studentDetails2.getChildren().addAll(courseLabel, courseField, hallNameLabel, hallNameField, stuIDLabel, stuIDField);
+       studentDetails3.getChildren().addAll(rentLabel, rentField,feeLabel, feeField, startLabel, startDate, endLabel, endDate);
         disabledDetails.getChildren().addAll(disabledLabel, disableButtons, disabledPriorityLabel, priorityButtons);
         employed.getChildren().addAll(workLabel, employee1, employee2);
         employeeDetails.getChildren().addAll(dateEmployedLabel, dateEmployedField, roleLabel, roleField, salaryLabel, salaryField);
@@ -136,10 +151,10 @@ public class StudentTest extends Application {
 
         // add all components to VBox
         vertical.getChildren().addAll(headingLabel, sectSeparator, studentLabel, studentDetails1,
-                stuDetails, studentDetails2, seniorStuLabel, degree, disabledDetails,
+                stuDetails, studentDetails2, studentDetails3, seniorStuLabel, degree, disabledDetails,
                 employedLabel, spaceLabel, employed, employeeDetails, sectSeparator2,
                 displayStudentsInfo, addButton, clearButton, saveButton);
-        degree.getChildren().addAll(check1, check2, check3, check4);
+        degree.getChildren().addAll(comboBox);
         Scene scene = new Scene(vertical, Color.web("#ffd9b3"));
 
         // set font of heading
@@ -161,13 +176,17 @@ public class StudentTest extends Application {
         // set alignment and Background of componets
         vertical.setAlignment(Pos.CENTER);
         vertical.setBackground(Background.EMPTY);
+        stuDetails.setAlignment(Pos.CENTER);
+        studentDetails1.setAlignment(Pos.CENTER);
+        studentDetails2.setAlignment(Pos.CENTER);
+        studentDetails3.setAlignment(Pos.CENTER);
         addButton.setAlignment(Pos.CENTER);
         employed.setAlignment(Pos.CENTER);
         degree.setAlignment(Pos.CENTER);
         employeeDetails.setAlignment(Pos.CENTER);
 
         // set minimum and maximum width  and height of components 
-        displayStudentsInfo.setMaxSize(600, 700);
+        displayStudentsInfo.setMaxSize(900, 700);
         
         // set width and height of window
         stage.setWidth(WIDTH);
@@ -176,17 +195,18 @@ public class StudentTest extends Application {
         // set actions of buttons
         addButton.setOnAction(e -> addHandler());
         clearButton.setOnAction(e -> clearWindow());
- saveButton.setOnAction(e -> {
-        try {
-            saveStudents();
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-    });
+
 
         priority1.setOnAction(e -> Ydisable());
         priority2.setOnAction(e -> Ndisable());
-        check2.setOnAction(e -> postgraduate());
+        comboBox.setOnAction(event -> {
+            String selectedOption = comboBox.getValue();
+            if (selectedOption.equals("Post graduate")){
+                displayStudentsInfo.appendText("\n You are a senior student and entitled to get rent free");
+
+            }
+        });
+        saveButton.setOnAction(e -> saveData());
 
         stage.setScene(scene);
         stage.setTitle("Student Form");
@@ -205,26 +225,27 @@ public class StudentTest extends Application {
         String homeAddress = homeAddressField.getText();
         String stuCourse = courseField.getText();
         String fee = feeField.getText();
-        String start = startField.getText();
-        String end = endField.getText();
         String stuID = stuIDField.getText();
         String dateEmployed = dateEmployedField.getText();
         String role = roleField.getText();
         String salary = salaryField.getText();
         String rent = salaryField.getText();
+        String hall = hallNameField.getText();
 
         // check for errors
-        if (stuName.length() == 0 || stuDOB.length() == 0 || stuGender.length() == 0 || homeAddress.length() == 0) {
+        if (stuName.length() == 0 || stuDOB.length() == 0 || stuGender.length() == 0 || homeAddress.length() == 0 || hall.length() == 0) {
             displayStudentsInfo.setText("These field cannot be empty");
         } else if (stuCourse.length() == 0 || stuID.length() == 0) {
             displayStudentsInfo.setText("You must enter both your course name and ID");
         } else {
 
-            Stu addStudent = new Stu(stuCourse, fee, start, end, stuID, rent, stuName, stuDOB,
+            Stu addStudent = new Stu(stuCourse, fee, stuID, rent, stuName, stuDOB,
                     homeAddress, stuGender);
             Employee emp = new Employee(dateEmployed, role, salary);
+             Hall Name = new Hall(hall);
             funmiHall.addStudent(addStudent);
             funmiHall.emp(emp);
+            funmiHall.Name(Name);
 
             nameField.setText("");
             dobField.setText("");
@@ -232,18 +253,18 @@ public class StudentTest extends Application {
             courseField.setText("");
             stuIDField.setText("");
             feeField.setText("");
-            startField.setText("");
-            endField.setText("");
             homeAddressField.setText("");
             dateEmployedField.setText("");
             roleField.setText("");
             salaryField.setText("");
             rentField.setText("");
+            hallNameField.setText("");
             displayStudentsInfo.setText("");
             displayStudentsInfo.appendText(stuName + " successfully added");
-            displayStudentsInfo.appendText("\n\nInformtion provided are: \n" + "   Name: " + stuName + "\n   Date of birth : "
-                    + stuDOB + "\n   Gender: " + stuGender + "\n   Course: " + stuCourse + "\n   Student ID: " + stuID
-                    + "\n Rent: " + rent + "Date of employment: " + dateEmployed + "    Role: " + role + "   salary received: " + salary);
+            displayStudentsInfo.appendText("\n\nInformtion provided are: \n" + "   Name: " + stuName + "\n   Date of birth : "+ stuDOB + "\n   Gender: " + stuGender + "\n  "
+                    + " Course: " + stuCourse + "\n   Student ID: " + stuID
+                    + "\n Rent: " + rent + "Date of employment: " + dateEmployed + "    Role: " + role + "   salary received: " 
+                    + salary + "\nHall residence: " + hall);
 
         }
         displayStudentsInfo.appendText(funmiHall.displayStudentsInfo());
@@ -261,16 +282,21 @@ public class StudentTest extends Application {
         displayStudentsInfo.appendText("\n You are a senior student and entitled to get rent free");
     }
 
-// method to save students data
-    private void saveStudents() throws IOException {
-    Collection<Stu> students = (Collection<Stu>) funmiHall.getStu(WIDTH);
-    FileWriter writer = new FileWriter("students.txt");
-    for (Stu s : students) {
-        writer.write(s.toString() + "\n");
+        private void saveData() {
+        try {
+            FileOutputStream fileOut = new FileOutputStream("students.txt");
+            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+            out.writeObject(funmiHall);
+            out.close();
+            fileOut.close();
+            displayStudentsInfo.appendText("Your data is being saved!");
+        } catch (IOException i) {
+            i.printStackTrace();
+        }
     }
-    writer.close();
-}
 
+
+  
     public static void main(String[] args) {
         launch(args);
     }
@@ -278,8 +304,24 @@ public class StudentTest extends Application {
 }
 
 
-
-
+//        saveButton.setOnAction(e -> {
+//        try {
+//            saveStudents();
+//        } catch (IOException ex) {
+//            ex.printStackTrace();
+//        }
+//    });
+//
+//
+//// method to save students data
+//    private void saveStudents() throws IOException {
+//    Collection<Stu> students = (Collection<Stu>) funmiHall.getStu(WIDTH);
+//    FileWriter writer = new FileWriter("students.txt");
+//    for (Stu s : students) {
+//        writer.write(s.toString() + "\n");
+//    }
+//    writer.close();
+//}
 
 
 

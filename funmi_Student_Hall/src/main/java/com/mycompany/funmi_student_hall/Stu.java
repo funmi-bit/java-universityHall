@@ -28,39 +28,18 @@ public class Stu extends person implements Serializable{
      *
      * @param courseTitle
      * @param tuitionFee
-     * @param startDate
-     * @param endDate
      * @param rent
      * @param name
      * @param dob
      * @param homeAddress
      * @param countryOfOrigin
      * @param gender
-     * @param stuGender
      */
-    public Stu(String courseTitle, String tuitionFee, String startDate, String endDate, String rent, String name, String dob, String homeAddress, String countryOfOrigin, String gender, String stuGender) {
-        this(courseTitle, tuitionFee, startDate, endDate, rent, name, dob, homeAddress, countryOfOrigin, gender);
-    }
 
-    /**
-     *
-     * @param courseTitle
-     * @param tuitionFee
-     * @param startDate
-     * @param endDate
-     * @param rent
-     * @param name
-     * @param dob
-     * @param homeAddress
-     * @param countryOfOrigin
-     * @param gender
-     */
-    public Stu(String courseTitle, String tuitionFee, String startDate, String endDate, String rent, String name, String dob, String homeAddress, String countryOfOrigin, String gender) {
+    public Stu(String courseTitle, String tuitionFee, String rent, String name, String dob, String homeAddress, String countryOfOrigin, String gender) {
         super(name, dob, homeAddress, gender);
         this.courseTitle = courseTitle;
         this.tuitionFee = tuitionFee;
-        this.startDate = startDate;
-        this.endDate = endDate;
         this.stuID = stuID;
         this.rent = rent;
     }
@@ -97,26 +76,7 @@ public class Stu extends person implements Serializable{
         this.tuitionFee = tuitionFee;
     }
 
-    /**
-     *
-     * @return
-     */
-    public String getEndDate() {
-        return endDate;
-    }
 
-    /**
-     *
-     * @param endDate
-     */
-    public void setEndDate(String endDate) {
-        this.endDate = endDate;
-    }
-
-    /**
-     *
-     * @return
-     */
     public int getStuID() {
         return stuID;
     }
@@ -145,8 +105,5 @@ public class Stu extends person implements Serializable{
         this.rent = rent;
     }
 
-    String toFileString() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 
 }
